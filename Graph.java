@@ -87,11 +87,23 @@ Integer[] pred = new Integer[n];
             }
         }
 
-
+   System.out.println();
+        System.out.println(buildTree(pred,start));
 
     }
 
 
+public String buildTree(Integer[] pred, int start){
+        StringBuilder sb = new StringBuilder();
+        sb.append("[/").append(start);
+    for (int i = 0; i < n; i++) {
+        if(pred[i] != null && pred[i] == start){
+            sb.append(buildTree(pred,i));
+        }
+    }
+      sb.append("]");
+    return sb.toString();
+}
 
     public static void main(String[] args) {
         Graph graph = new Graph(5);
